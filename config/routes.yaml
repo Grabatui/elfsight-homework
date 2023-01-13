@@ -1,0 +1,11 @@
+controllers:
+    resource:
+        path: ../src/Core/Presentation/Controller/
+        namespace: App\Core\Presentation\Controller
+    type: attribute
+
+api_login_check:
+    path: /api/v1/login
+
+api_refresh_token:
+    path: /api/v1/refresh_token

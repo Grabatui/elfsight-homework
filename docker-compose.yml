@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx/development
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+      - php-fpm
+    ports:
+      - "8084:80"
+    networks:
+      database:
+      php-fpm:
+  php-fpm:
+    build:
+      context: ./docker/php-fpm/development
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+    ports:
+      - "9001:9000"
+    networks:
+      database:
+      php-fpm:
+  php-cli:
+    build:
+      context: ./docker/php-cli/development
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    volumes:
+      - ./:/app
+      - composer:/root/.composer/cache
+    depends_on:
+      - database
+    networks:
+      database:
+  database:
+    build:
+      context: ./docker/postgres/development
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./docker/postgres/development:/docker-entrypoint-initdb.d
+      - ./database:/var/lib/postgresql/data:rw
+    ports:
+      - "15435:5432"
+    networks:
+      database:
+
+volumes:
+  composer:
+  database:
+
+networks:
+  database:
+  php-fpm:
