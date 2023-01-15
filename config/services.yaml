@@ -8,6 +8,8 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Core\Persistence\Repository\ApiRickAndMorty\RickAndMortyApiRepository:
+        arguments:
+            $baseUri: '%env(resolve:RICK_AND_MORTY_BASE_URL)%'

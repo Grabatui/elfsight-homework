@@ -4,8 +4,107 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1afe60c68a5452cf69e084bedf7ff31e",
+    "content-hash": "78d2c9278833ccec1c6c2f099a17a204",
     "packages": [
+        {
+            "name": "digitalrevolution/symfony-request-validation",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/123inkt/symfony-request-validation.git",
+                "reference": "1e9ca54facd1803f9fae27af17393a8bd85d2825"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/123inkt/symfony-request-validation/zipball/1e9ca54facd1803f9fae27af17393a8bd85d2825",
+                "reference": "1e9ca54facd1803f9fae27af17393a8bd85d2825",
+                "shasum": ""
+            },
+            "require": {
+                "digitalrevolution/symfony-validation-shorthand": "^1.0.4",
+                "php": ">=7.4",
+                "symfony/config": "^5.4 || ^6.0",
+                "symfony/dependency-injection": "^5.4 || ^6.0",
+                "symfony/http-foundation": "^5.4 || ^6.0",
+                "symfony/http-kernel": "^5.4 || ^6.0",
+                "symfony/validator": "^5.4 || ^6.0"
+            },
+            "require-dev": {
+                "digitalrevolution/phpunit-file-coverage-inspection": "^v1.0",
+                "phpmd/phpmd": "@stable",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan-symfony": "^1.2",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "DigitalRevolution\\SymfonyRequestValidation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Automatic request validation for symfony",
+            "support": {
+                "issues": "https://github.com/123inkt/symfony-request-validation/issues",
+                "source": "https://github.com/123inkt/symfony-request-validation/tree/v2.1.0"
+            },
+            "time": "2023-01-03T09:58:02+00:00"
+        },
+        {
+            "name": "digitalrevolution/symfony-validation-shorthand",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/123inkt/symfony-validation-shorthand.git",
+                "reference": "12c20955609b7db4fc1244e6ebf32ac787f77b9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/123inkt/symfony-validation-shorthand/zipball/12c20955609b7db4fc1244e6ebf32ac787f77b9f",
+                "reference": "12c20955609b7db4fc1244e6ebf32ac787f77b9f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/validator": "^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "@stable",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "0.12.*",
+                "phpstan/phpstan-phpunit": "0.12.*",
+                "phpstan/phpstan-strict-rules": "0.12.*",
+                "phpstan/phpstan-symfony": "0.12.*",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "DigitalRevolution\\SymfonyValidationShorthand\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Validation shorthand for symfony",
+            "support": {
+                "issues": "https://github.com/123inkt/symfony-validation-shorthand/issues",
+                "source": "https://github.com/123inkt/symfony-validation-shorthand/tree/v1.0.5"
+            },
+            "time": "2021-12-13T20:24:01+00:00"
+        },
         {
             "name": "doctrine/cache",
             "version": "2.2.0",
@@ -5119,6 +5218,114 @@
             "time": "2022-11-25T10:21:52+00:00"
         },
         {
+            "name": "symfony/validator",
+            "version": "v6.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/validator.git",
+                "reference": "bd44a9ae3b19ae81c723b5a5fff6a1a36844ee01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/bd44a9ae3b19ae81c723b5a5fff6a1a36844ee01",
+                "reference": "bd44a9ae3b19ae81c723b5a5fff6a1a36844ee01",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/translation-contracts": "^1.1|^2|^3"
+            },
+            "conflict": {
+                "doctrine/annotations": "<1.13",
+                "doctrine/lexer": "<1.1",
+                "phpunit/phpunit": "<5.4.3",
+                "symfony/dependency-injection": "<5.4",
+                "symfony/expression-language": "<5.4",
+                "symfony/http-kernel": "<5.4",
+                "symfony/intl": "<5.4",
+                "symfony/property-info": "<5.4",
+                "symfony/translation": "<5.4",
+                "symfony/yaml": "<5.4"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.13|^2",
+                "egulias/email-validator": "^2.1.10|^3",
+                "symfony/cache": "^5.4|^6.0",
+                "symfony/config": "^5.4|^6.0",
+                "symfony/console": "^5.4|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/expression-language": "^5.4|^6.0",
+                "symfony/finder": "^5.4|^6.0",
+                "symfony/http-client": "^5.4|^6.0",
+                "symfony/http-foundation": "^5.4|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0",
+                "symfony/intl": "^5.4|^6.0",
+                "symfony/mime": "^5.4|^6.0",
+                "symfony/property-access": "^5.4|^6.0",
+                "symfony/property-info": "^5.4|^6.0",
+                "symfony/translation": "^5.4|^6.0",
+                "symfony/yaml": "^5.4|^6.0"
+            },
+            "suggest": {
+                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "psr/cache-implementation": "For using the mapping cache.",
+                "symfony/config": "",
+                "symfony/expression-language": "For using the Expression validator and the ExpressionLanguageSyntax constraints",
+                "symfony/http-foundation": "",
+                "symfony/intl": "",
+                "symfony/property-access": "For accessing properties within comparison constraints",
+                "symfony/property-info": "To automatically add NotNull and Type constraints",
+                "symfony/translation": "For translating validation errors.",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Validator\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides tools to validate values",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/validator/tree/v6.2.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-12-22T17:55:15+00:00"
+        },
+        {
             "name": "symfony/var-dumper",
             "version": "v6.2.3",
             "source": {
@@ -5512,7 +5719,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
