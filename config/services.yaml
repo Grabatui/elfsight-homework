@@ -13,3 +13,10 @@ services:
     App\Core\Persistence\Repository\ApiRickAndMorty\RickAndMortyApiRepository:
         arguments:
             $baseUri: '%env(resolve:RICK_AND_MORTY_BASE_URL)%'
+
+    sentiment_analyzer:
+        class: Sentiment\Analyzer
+
+    App\Core\Persistence\Action\Web\Episode\GetRawSentimentForMessageAction:
+        arguments:
+            $analyzer: '@sentiment_analyzer'
