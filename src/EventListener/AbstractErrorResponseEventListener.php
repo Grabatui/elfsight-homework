@@ -3,18 +3,12 @@
 namespace App\EventListener;
 
 use App\Core\Presentation\Entity\Enum\ResponseTypeEnum;
-use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationFailureEvent;
-use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+use Symfony\Component\HttpFoundation\Response;
 
-#[AsEventListener(
-    event: 'lexik_jwt_authentication.on_authentication_failure'
-)]
-class AuthenticationFailureListener
+abstract class AbstractErrorResponseEventListener
 {
-    public function __invoke(AuthenticationFailureEvent $event): void
+    protected function formatResponse(Response $response): void
     {
-        $response = $event->getResponse();
-
         $data = json_decode($response->getContent(), true);
 
         $response->setContent(
