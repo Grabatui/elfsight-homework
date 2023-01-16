@@ -2,8 +2,8 @@
 
 namespace App\Core\Presentation\Entity\Enum;
 
-enum ResponseTypeEnum
+enum ResponseTypeEnum: string
 {
-    case error;
-    case success;
+    case error = 'error';
+    case success = 'success';
 }

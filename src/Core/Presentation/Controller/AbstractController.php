@@ -23,7 +23,7 @@ abstract class AbstractController extends BaseAbstractController
                     ['error' => $message],
                     $additionalData
                 ),
-                'type' => ResponseTypeEnum::error->name,
+                'type' => ResponseTypeEnum::error->value,
             ],
             $status
         );
@@ -34,7 +34,7 @@ abstract class AbstractController extends BaseAbstractController
     ): Response {
         return $this->json([
             'data' => $data,
-            'type' => ResponseTypeEnum::success->name,
+            'type' => ResponseTypeEnum::success->value,
         ]);
     }
 }

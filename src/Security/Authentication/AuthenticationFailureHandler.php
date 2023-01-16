@@ -20,7 +20,7 @@ class AuthenticationFailureHandler extends BaseAuthenticationFailureHandler
         return new JsonResponse(
             [
                 'message' => $data['message'],
-                'type' => ResponseTypeEnum::error->name,
+                'type' => ResponseTypeEnum::error->value,
                 'errors' => [],
             ],
             $data['code']
