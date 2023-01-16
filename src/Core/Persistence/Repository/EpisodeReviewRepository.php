@@ -17,6 +17,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class EpisodeReviewRepository extends ServiceEntityRepository
 {
+    use TransactionalTrait;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, EpisodeReview::class);
