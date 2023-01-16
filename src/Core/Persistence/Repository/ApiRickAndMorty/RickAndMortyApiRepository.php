@@ -50,6 +50,19 @@ class RickAndMortyApiRepository
         }
     }
 
+    public function getOneEpisode(int $id): ?EpisodeEntity
+    {
+        try {
+            $result = $this->httpClient
+                ->request('GET', sprintf('/api/episode/%d', $id))
+                ->toArray();
+
+            return $this->makeEpisode($result);
+        } catch (Throwable) {
+            return null;
+        }
+    }
+
     private function buildClient(string $baseUri): HttpClientInterface
     {
         return HttpClient::createForBaseUri($baseUri);

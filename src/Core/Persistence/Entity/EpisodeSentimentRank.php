@@ -15,7 +15,7 @@ class EpisodeSentimentRank
     private int $episodeId;
 
     #[ORM\Column(type: 'float', nullable: false)]
-    private ?float $sentimentRank = null;
+    private float $sentimentRank;
 
     #[ORM\Column(type: 'datetime', nullable: false)]
     private DateTimeInterface $createdAt;
@@ -45,12 +45,12 @@ class EpisodeSentimentRank
         $this->episodeId = $episodeId;
     }
 
-    public function getSentimentRank(): ?float
+    public function getSentimentRank(): float
     {
         return $this->sentimentRank;
     }
 
-    public function setSentimentRank(?float $sentimentRank): void
+    public function setSentimentRank(float $sentimentRank): void
     {
         $this->sentimentRank = $sentimentRank;
     }

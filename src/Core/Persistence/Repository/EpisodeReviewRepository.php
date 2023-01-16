@@ -19,6 +19,8 @@ class EpisodeReviewRepository extends ServiceEntityRepository
 {
     use TransactionalTrait;
 
+    private const MAX_SELECTED_REVIEWS_COUNT = 100;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, EpisodeReview::class);
@@ -46,5 +48,19 @@ class EpisodeReviewRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
 
         return !empty($row) ? (float) reset($row) : 0.0;
+    }
+
+    public function getTopReviewsByEpisodeId(int $episodeId, int $count): array
+    {
+        $count = min($count, static::MAX_SELECTED_REVIEWS_COUNT);
+
+        return $this->findBy(
+            criteria: compact('episodeId'),
+            orderBy: [
+                'sentimentRank' => 'DESC',
+                'createdAt' => 'DESC',
+            ],
+            limit: $count
+        );
     }
 }
