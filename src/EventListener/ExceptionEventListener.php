@@ -2,6 +2,8 @@
 
 namespace App\EventListener;
 
+use App\Core\Domain\Common\Exception\Entity\TypeEnum;
+use App\Core\Domain\Common\Exception\OutputException;
 use App\Core\Presentation\Entity\Enum\ResponseTypeEnum;
 use App\Core\Presentation\Exception\Request\ConstraintViolationsException;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -27,10 +29,16 @@ class ExceptionEventListener
             ? new JsonResponse($this->makeContent($exception))
             : new Response($exception->getMessage());
 
+        $exceptionStatusCode = $this->makeStatusCode($exception);
+
         if ($exception instanceof HttpExceptionInterface) {
-            $response->setStatusCode($exception->getStatusCode());
+            $response->setStatusCode(
+                $exceptionStatusCode ?: $exception->getStatusCode()
+            );
         } else {
-            $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
+            $response->setStatusCode(
+                $exceptionStatusCode ?: Response::HTTP_INTERNAL_SERVER_ERROR
+            );
         }
 
         $event->setResponse($response);
@@ -74,5 +82,16 @@ class ExceptionEventListener
             ),
             '[]'
         );
+    }
+
+    private function makeStatusCode(Throwable $exception): ?int
+    {
+        if ($exception instanceof OutputException) {
+            return match ($exception->getType()) {
+                TypeEnum::not_found => Response::HTTP_NOT_FOUND
+            };
+        }
+
+        return null;
     }
 }
