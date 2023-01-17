@@ -23,6 +23,9 @@ readonly class AddReviewUseCase
     {
         $this->callWithTransaction->run(
             function () use ($episodeId, $message) {
+                // Тут можно добавить проверку, что пользователь уже добавлял отзыв
+                // Но для простоты тестирования - опустим
+
                 $sentiment = $this->messageStatementFactory->make($message);
 
                 $this->addEpisodeReview->run(
