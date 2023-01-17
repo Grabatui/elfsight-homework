@@ -25,6 +25,7 @@ when@test:
     services:
         fake_http_client:
             class: App\Tests\Application\FakeHttpClient
+            public: true
 
         App\Core\Persistence\Repository\ApiRickAndMorty\RickAndMortyApiRepository:
             arguments:

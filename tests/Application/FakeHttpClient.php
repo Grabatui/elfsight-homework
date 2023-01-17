@@ -15,7 +15,7 @@ final readonly class FakeHttpClient implements HttpClientInterface
      * @param MockResponse[] $responses
      */
     public function __construct(
-        private array $responses
+        private array $responses = []
     ) {
     }
 

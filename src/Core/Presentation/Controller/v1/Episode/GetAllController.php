@@ -29,6 +29,8 @@ class GetAllController extends AbstractController
 
         $result = $this->getAllUseCase->get($page);
 
+        $page ??= 1;
+
         return $this->success([
             'items' => array_map(
                 fn (Episode $episode): array => $this->episodeFormatter->format($episode),
