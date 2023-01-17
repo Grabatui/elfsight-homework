@@ -23,11 +23,17 @@ readonly class EpisodeWithSentimentAndReviewsFactory
     ): EpisodeWithSentimentAndReviews {
         $episode = $this->getOneEpisodeById->get($episodeId);
 
+        try {
+            $sentimentRank = $this->getEpisodeSentimentRankByEpisodeId->get($episodeId);
+        } catch (OutputException) {
+            $sentimentRank = 0.0;
+        }
+
         return new EpisodeWithSentimentAndReviews(
             $episode->getId(),
             $episode->getName(),
             $episode->getReleaseDatetime(),
-            $this->getEpisodeSentimentRankByEpisodeId->get($episodeId),
+            $sentimentRank,
             $this->getLastReviewsByEpisodeId->get($episodeId, $reviewsCount)
         );
     }
