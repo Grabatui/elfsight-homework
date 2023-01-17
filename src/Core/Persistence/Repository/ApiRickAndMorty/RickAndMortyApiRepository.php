@@ -5,7 +5,6 @@ namespace App\Core\Persistence\Repository\ApiRickAndMorty;
 use App\Core\Persistence\Entity\ApiRickAndMorty\EpisodeEntity;
 use App\Core\Persistence\Entity\ApiRickAndMorty\EpisodesResult;
 use DateTimeImmutable;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Throwable;
 
@@ -13,16 +12,17 @@ class RickAndMortyApiRepository
 {
     private const AIR_DATE_FORMAT = 'F j, Y';
 
-    private HttpClientInterface $httpClient;
-
     public function __construct(
-        string $baseUri
+        string $baseUri,
+        private HttpClientInterface $httpClient
     ) {
-        $this->httpClient = $this->buildClient($baseUri);
+        $this->httpClient = $this->httpClient->withOptions([
+            'base_uri' => $baseUri,
+        ]);
     }
 
     public function getAllEpisodes(?int $page = null): EpisodesResult
-    {
+    {dd($this->httpClient);
         try {
             $uri = '/api/episode';
 
@@ -61,11 +61,6 @@ class RickAndMortyApiRepository
         } catch (Throwable) {
             return null;
         }
-    }
-
-    private function buildClient(string $baseUri): HttpClientInterface
-    {
-        return HttpClient::createForBaseUri($baseUri);
     }
 
     private function makeEpisode(array $raw): EpisodeEntity

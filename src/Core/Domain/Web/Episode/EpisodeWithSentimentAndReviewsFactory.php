@@ -2,6 +2,7 @@
 
 namespace App\Core\Domain\Web\Episode;
 
+use App\Core\Domain\Common\Exception\OutputException;
 use App\Core\Domain\Web\Episode\Entity\EpisodeWithSentimentAndReviews;
 
 readonly class EpisodeWithSentimentAndReviewsFactory
@@ -13,6 +14,9 @@ readonly class EpisodeWithSentimentAndReviewsFactory
     ) {
     }
 
+    /**
+     * @throws OutputException
+     */
     public function make(
         int $episodeId,
         int $reviewsCount

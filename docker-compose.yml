@@ -42,7 +42,7 @@ services:
     build:
       context: ./docker/postgres/development
     environment:
-      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_MULTIPLE_DATABASES: "${DATABASE_NAME},${TEST_DATABASE_NAME}"
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_HOST_AUTH_METHOD: trust
