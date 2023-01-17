@@ -47,7 +47,7 @@ services:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - ./docker/postgres/development:/docker-entrypoint-initdb.d
+      - ./docker/postgres/development/database-init.sql:/docker-entrypoint initdb.d/database-init.sql
       - ./database:/var/lib/postgresql/data:rw
     ports:
       - "15435:5432"

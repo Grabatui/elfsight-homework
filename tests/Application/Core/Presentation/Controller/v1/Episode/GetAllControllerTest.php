@@ -25,7 +25,7 @@ class GetAllControllerTest extends WebTestCase
                 'password' => 'password',
             ])
         );
-
+dd($client->getResponse()->getContent());
         $this->getContainer()->set(
             FakeHttpClient::class,
             new FakeHttpClient([

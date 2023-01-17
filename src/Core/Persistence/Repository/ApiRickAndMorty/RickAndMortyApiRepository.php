@@ -22,7 +22,7 @@ class RickAndMortyApiRepository
     }
 
     public function getAllEpisodes(?int $page = null): EpisodesResult
-    {dd($this->httpClient);
+    {
         try {
             $uri = '/api/episode';
 
